@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+
+
+<form action="/login" method="post" >
+
+Email: <input id="email_input" type="email" name="email" value="" required="required"/>
+</br>
+password: <input id="password_input" type="password" name="password" value="" required="required"/>
+</br>
+    <input type="submit" value="login" id="login" />
+</form>
+
+{% if session["error_login"] %}
+
+<div id="error_login" role="alert" class="alert" > {{ session["error_login"]}} </div>
+
+{{ session["error_login"].clear }}
+
+{% endif %}
+
+if you forget your password <a href="show_checkemail">click here</a>
+
+
+
+for register <a href="show_register">click here</a>
+
+
+for google maps <a href="show_place">click here</a>
+
+<script>
+ $(document).ready(function () {
+
+        $('form').on('submit',function(event){
+
+            $.ajax({
+                data : {
+                    email : $('#email_input').val(),
+                    password : $('#password_input').val(),
+                },
+
+                type :'POST' ,
+                url : "/login"
+            })
+
+                .done(function (data) {
+
+                    if(data.error){
+
+                        $('#error_login').text(data.error).show();
+
+                        $('#success_login').hide();
+
+                    }
+                    else{
+
+                        $('#success_login').text(data.name).show();
+
+                        $('#error_login').hide();
+                    }
+                })
+
+            event.preventDefault();
+
+        });
+
+    })
+
+</script>
+

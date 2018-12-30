@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<form action="/checkemail" method="post" >
+
+Email: <input id="email_input" type="email" name="email" value="" required="required"/>
+</br>
+    <input type="submit" value="ok" id="login" />
+</form>
+
+{% if session["error_checkemail"] %}
+
+</br>
+
+<div  role="alert" class="alert" > {{ session["error_checkemail"]}} </div>
+
+{{ session["error_checkemail"].clear }}
+
+{% endif %}
+
+
+</body>
+</html>

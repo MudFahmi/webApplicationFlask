@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/checkactivation" method="post" >
+
+Activation Code: <input id="activation_code" type="text" name="activation_code" value="" required="required"/>
+</br>
+    <input type="submit" value="Check" id="login" />
+</form>
+
+{% if session["error_activation_code"] %}
+
+</br>
+
+<div  role="alert" class="alert" > {{ session["error_activation_code"]}} </div>
+
+{{ session["error_activation_code"].clear }}
+
+{% endif %}
+
+
+</body>
+</html>

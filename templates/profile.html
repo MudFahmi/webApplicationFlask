@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+< lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>my profile</title>
+</head>
+</br>
+
+
+<body>
+
+Name :{{ session["user_name"] }}
+</br>
+
+Email :{{ session["user_email"] }}
+</br>
+
+password :{{ session["user_password"] }}
+</br>
+</br>
+
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+
+     <strong>Files:</strong><br>
+
+    <input id="file-picker" type="file" name="file">
+
+    <div id="msg"></div>
+
+    <input type="submit" value="Upload!" id="upload-button">
+
+</form>
+
+</body>
+</html>
